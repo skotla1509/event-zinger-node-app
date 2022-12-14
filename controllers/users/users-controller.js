@@ -9,7 +9,7 @@ export default (app) => {
 
     app.post('/users', createUser);
     app.get('/users', findAllUsers);
-    app.get('/users/:name', findUserByName);
+    app.get('/users/:uid', findUserById);
     app.put('/users/:uid', updateUser);
     app.delete('/users/:uid', deleteUser);
 };
@@ -22,6 +22,7 @@ const register = async (req, res) => {
         res.sendStatus(403);
         return;
     }
+    user.dateOfJoining = new Date().toISOString();
     const currentUser = await usersDao.createUser(user);
     currentUser.password = '';
     req.session['currentUser'] = currentUser;
@@ -94,6 +95,12 @@ const findAllUsers  = async (req, res) => {
 const findUserByName  = async (req, res) => {
     const name = req.params.name;
     const users = await usersDao.findUserByName(name);
+    res.json(users);
+};
+/* ------------------------------------ Find user by Id ------------------------------------ */
+const findUserById  = async (req, res) => {
+    const uid = req.params.uid;
+    const users = await usersDao.findUserById(uid);
     res.json(users);
 };
 /* ------------------------------------ Update user ------------------------------------ */

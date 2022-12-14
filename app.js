@@ -5,7 +5,9 @@ import cors from 'cors';
 import UsersController from "./controllers/users/users-controller.js";
 import HelloController from "./controllers/hello-world.js";
 import SessionController from "./session-controller.js";
-import ReviewsController from "./controllers/reviews/reviews-controller.js";
+import EventsController from "./controllers/events/events-controller.js";
+import CommentsController from "./controllers/comments/comments-controller.js";
+import InterestsController from "./controllers/interests/interests-controller.js";
 
 // Initialise app
 const app = express();
@@ -45,8 +47,9 @@ mongoose.connect(CONNECTION_STRING, options);
 // Controllers
 UsersController(app);
 HelloController(app);
-ReviewsController(app);
+CommentsController(app);
+InterestsController(app);
 SessionController(app);
-
+EventsController(app);
 // Listen on port 5000
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 1000);
