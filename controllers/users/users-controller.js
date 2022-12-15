@@ -105,19 +105,14 @@ const findUserById  = async (req, res) => {
 };
 /* ------------------------------------ Update user ------------------------------------ */
 const updateUser = async (req, res) => {
-    const uidToUpdate = req.params.tid;
+    const uidToUpdate = req.params.uid;
     const updates = req.body;
-    usersDao.updateUser(uidToUpdate, updates)
-        .then((result) => {
-            res.sendStatus(200);
-        })
-        .catch((error) => {
-            res.sendStatus(400);
-        });
+    const actualUser = await usersDao.updateUser(uidToUpdate, updates);
+    res.json(actualUser);
 }
 /* ------------------------------------ Delete user ------------------------------------ */
 const deleteUser = async (req, res) => {
-    const uidToDelete = req.params.tid;
+    const uidToDelete = req.params.uid;
     usersDao.deleteUser(uidToDelete)
         .then((result) => {
             res.sendStatus(200);
