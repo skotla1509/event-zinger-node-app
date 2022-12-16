@@ -39,8 +39,8 @@ const TransactionController = (app) => {
                 updates['remainingTickets'] -= body.tickets;
             }
             else {
-                updates['totalTickets'] += body.tickets;
-                updates['remainingTickets'] += body.tickets;
+                updates['totalTickets'] += Number(body.tickets);
+                updates['remainingTickets'] += Number(body.tickets);
             }
             const actualTickets = await ticketsDao.updateTickets(currentTickets._id, updates);
 
