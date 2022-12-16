@@ -109,7 +109,8 @@ const updateUser = async (req, res) => {
     const uidToUpdate = req.params.uid;
     const updates = req.body;
     const actualUser = await usersDao.updateUser(uidToUpdate, updates);
-    res.json(actualUser);
+    req.session['currentUser'] = {...req.session['currentUser'], ...updates};
+    res.json({updated: req.session['currentUser'], ...actualUser});
 }
 /* ------------------------------------ Delete user ------------------------------------ */
 const deleteUser = async (req, res) => {
