@@ -8,7 +8,7 @@ const obj = {
     lastName: {type: String},
     gender: {type: String, enum: ['MALE', 'FEMALE']},
     avatar: {type: String},
-    dateOfJoining: {type: String},
+    dateOfJoining: {type: Number},
     addressLine1: {type: String},
     addressLine2: {type: String},
     pinCode: {type: String},

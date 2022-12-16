@@ -22,7 +22,7 @@ const register = async (req, res) => {
         res.sendStatus(403);
         return;
     }
-    user.dateOfJoining = new Date().toISOString().slice(0, 10);
+    user.dateOfJoining = new Date().getTime();
     const currentUser = await usersDao.createUser(user);
     currentUser.password = '';
     req.session['currentUser'] = currentUser;
