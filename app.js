@@ -27,7 +27,7 @@ app.use(session(sess));
 app.use(cors(
   {
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: process.env.EVENT_ZINGER_ORIGIN || 'http://localhost:3000'
   }
 ));
 
@@ -42,7 +42,7 @@ const options = {
     family: 4 // Use IPv4, skip trying IPv6
 };
 
-const CONNECTION_STRING = 'mongodb://localhost:27017/event_zinger'; // process.env.DB_CONNECTION_STRING || 'mongodb://localhost:27017/tuiter';
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb://localhost:27017/event_zinger';
 
 mongoose.connect(CONNECTION_STRING, options);
 
