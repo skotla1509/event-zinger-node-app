@@ -6,7 +6,6 @@ export default (app) => {
     app.post('/login', login)
     app.post('/logout', logout)
     app.post('/profile', profile)
-
     app.post('/users', createUser);
     app.get('/users', findAllUsers);
     app.get('/users/:uid', findUserById);
