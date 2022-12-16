@@ -22,7 +22,7 @@ const register = async (req, res) => {
         res.sendStatus(403);
         return;
     }
-    user.dateOfJoining = new Date().toISOString();
+    user.dateOfJoining = new Date().toISOString().slice(0, 10);
     const currentUser = await usersDao.createUser(user);
     currentUser.password = '';
     req.session['currentUser'] = currentUser;
@@ -88,7 +88,8 @@ const createUser = async (req, res) => {
 }
 /* ------------------------------------ Find all users ------------------------------------ */
 const findAllUsers  = async (req, res) => {
-    const users = await usersDao.findAllUsers();
+    let users = await usersDao.findAllUsers();
+    users = users.filter((item) => item.userRole !== "ADMINISTRATOR");
     res.json(users);
 };
 /* ------------------------------------ Find user by name ------------------------------------ */
@@ -113,11 +114,6 @@ const updateUser = async (req, res) => {
 /* ------------------------------------ Delete user ------------------------------------ */
 const deleteUser = async (req, res) => {
     const uidToDelete = req.params.uid;
-    usersDao.deleteUser(uidToDelete)
-        .then((result) => {
-            res.sendStatus(200);
-        })
-        .catch((error) => {
-            res.sendStatus(400);
-        });
+    const actualUser = await usersDao.deleteUser(uidToDelete);
+    res.json({deleted: uidToDelete, ...actualUser});
 }
