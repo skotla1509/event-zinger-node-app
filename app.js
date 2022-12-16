@@ -8,6 +8,8 @@ import SessionController from "./session-controller.js";
 import EventsController from "./controllers/events/events-controller.js";
 import CommentsController from "./controllers/comments/comments-controller.js";
 import InterestsController from "./controllers/interests/interests-controller.js";
+import TransactionController from "./controllers/transactions/transaction-controller.js";
+import TicketsController from "./controllers/tickets/tickets-controller.js";
 
 // Initialise app
 const app = express();
@@ -51,5 +53,7 @@ CommentsController(app);
 InterestsController(app);
 SessionController(app);
 EventsController(app);
+TransactionController(app);
+TicketsController(app);
 // Listen on port 5000
 app.listen(process.env.PORT || 1000);
