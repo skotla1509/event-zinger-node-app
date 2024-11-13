@@ -42,7 +42,7 @@ const options = {
     family: 4 // Use IPv4, skip trying IPv6
 };
 
-const CONNECTION_STRING = 'mongodb://localhost:27017/event_zinger'; // process.env.DB_CONNECTION_STRING || 'mongodb://localhost:27017/tuiter';
+const CONNECTION_STRING = 'mongodb://localhost:27017/event_zinger_db'; // process.env.DB_CONNECTION_STRING || 'mongodb://localhost:27017/tuiter';
 
 mongoose.connect(CONNECTION_STRING, options);
 
