@@ -18,6 +18,9 @@ Event Zinger is a ticketing platform inspired by Ticketmaster, allowing users to
 This README provides instructions for setting up and running the project locally, along with an overview of the server's architecture, routing, and technologies used.
 
 **NOTE**: To learn more about the various features and screens of this project, refer to the DESIGN-README.md file.
+This project is part of a larger system and relies on the following repositories:
+- [React Frontend Repository](https://github.com/skotla1509/event-zinger-react-app) 
+- [Node.js Backend Repository](https://github.com/skotla1509/event-zinger-node-app) 
 
 ---
 
